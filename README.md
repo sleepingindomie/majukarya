@@ -1,62 +1,5 @@
-Backend API untuk sistem manajemen vendor dan pemesanan barang PT. Maju Karya.
 
----
-
-## 🚀 Tech Stack
-
-- **Language:** PHP 8.x
-- **Framework:** Laravel 12 (12.35.1)
-- **Database:** MySQL
-- **Authentication:** JWT (JSON Web Token) - tymon/jwt-auth
-
----
-
-## ✨ Features
-
-✅ **Authentication**
-- Register, Login, Logout dengan JWT
-- Protected routes dengan JWT middleware
-
-✅ **CRUD Operations**
-- Vendors Management
-- Items Management
-- Orders Management
-- Vendor Items Management (untuk manage harga item per vendor)
-
-✅ **Reporting System**
-1. **Report Items by Vendor** - List item per vendor
-2. **Report Vendor Ranking** - Ranking berdasarkan jumlah transaksi
-3. **Report Price Rate Changes** - Perubahan harga dengan status up/down/stable
-
-✅ **Additional**
-- Input validation
-- Database migrations
-- Sample data seeder
-
----
-
-## 📊 Database Schema
-
-### Tables
-
-**users** - User authentication
-- id, name, email (unique), password, timestamps
-
-**vendors** - Data vendor
-- id_vendor (PK), kode_vendor (unique), nama_vendor, timestamps
-
-**items** - Data item/barang
-- id_item (PK), kode_item (unique), nama_item, timestamps
-
-**orders** - Data transaksi pemesanan
-- id_order (PK), tgl_order, no_order (unique), id_vendor (FK), id_item (FK), timestamps
-
-**vendor_items** - Harga item per vendor
-- id_vendor_item (PK), id_vendor (FK), id_item (FK), harga_sebelum, harga_sekarang, timestamps
-
----
-
-## 🔧 Installation
+## Installation
 
 ### 1. Install Dependencies
 ```bash
@@ -86,14 +29,14 @@ php artisan db:seed
 php artisan serve
 ```
 
-## 👤 Default Login
+## Default Login
 
 **Email:** `test@example.com`
 **Password:** `password`
 
 ---
 
-## 🔌 API Endpoints
+## API Endpoints
 
 ### Public (No Auth)
 - `POST /api/register` - Register
@@ -137,48 +80,3 @@ php artisan serve
 - `GET /api/reports/price-rate` - Price rate changes (up/down/stable)
 
 ---
-
-## 🎯 Quick Start
-
-### 1. Login
-```bash
-POST http://localhost:8000/api/login
-Content-Type: application/json
-
-{
-    "email": "test@example.com",
-    "password": "password"
-}
-```
-
-Copy token dari response.
-
-### 2. Test Report (with token)
-```bash
-GET http://localhost:8000/api/reports/vendor-ranking
-Authorization: Bearer {your-token}
-```
-
----
-
-## 📦 Sample Data
-
-Setelah `php artisan db:seed`:
-
-**Users:** test@example.com (password: password)
-
-**Vendors:** V01, V02, V03
-
-**Items:** IT01, IT02, IT03
-
-**Orders:**
-- 30 orders dari V01
-- 25 orders dari V02
-- 20 orders dari V03
-
-**Vendor Items:**
-- V01 - IT01: 15000 → 10000 (down 33.33%)
-- V01 - IT02: 25000 → 27000 (up 8%)
-- V02 - IT03: 15000 → 15000 (stable)
-
----# majukarya
