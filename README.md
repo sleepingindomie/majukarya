@@ -65,14 +65,8 @@ composer install
 ```
 
 ### 2. Setup Environment
-Copy `.env.example` ke `.env` dan konfigurasi database:
-```env
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=majukarya_db
-DB_USERNAME=root
-DB_PASSWORD=
+```bash
+cp .env.example .env
 ```
 
 ### 3. Generate Keys
@@ -91,9 +85,6 @@ php artisan db:seed
 ```bash
 php artisan serve
 ```
-Server: **http://localhost:8000**
-
----
 
 ## 👤 Default Login
 
